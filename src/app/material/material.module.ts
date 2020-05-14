@@ -6,6 +6,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatTableModule } from "@angular/material/table";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatCardModule } from "@angular/material/card";
+import { MatGridListModule } from "@angular/material/grid-list";
 const MaterialComponents = [
   MatButtonModule,
   MatFormFieldModule,
@@ -14,6 +15,7 @@ const MaterialComponents = [
   MatTableModule,
   MatCheckboxModule,
   MatCardModule,
+  MatGridListModule,
 ];
 
 @NgModule({

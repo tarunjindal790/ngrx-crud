@@ -1,17 +1,32 @@
 <mat-card>
   <form [formGroup]="userForm">
     <mat-form-field floatLabel="never">
-      <input matInput formControlName="name" placeholder="Name..." />
+      <input matInput [formControl]="name" placeholder="Name..." />
+      <mat-error *ngIf="name.invalid">Enter valid characters</mat-error>
     </mat-form-field>
+    <br />
     <mat-form-field floatLabel="never">
-      <input matInput formControlName="email" placeholder="abc@example.com" />
+      <input matInput [formControl]="email" placeholder="abc@example.com" />
+      <mat-error *ngIf="email.invalid">Enter valid email</mat-error>
     </mat-form-field>
+    <br />
     <mat-form-field floatLabel="never">
-      <input matInput formControlName="mobile" placeholder="Mobile Number..." />
+      <input matInput [formControl]="mobile" placeholder="Mobile Number..." />
+      <mat-error *ngIf="mobile.invalid"
+        >Mobile number should be in valid Indian format</mat-error
+      >
     </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary" (click)="submitUser()">
+      Save
+    </button>
+
+    <!-- <button mat-raised-button color="primary">
+      Cancel
+    </button> -->
 
     <button mat-raised-button color="primary">
-      Submit
+      Delete
     </button>
   </form>
 </mat-card>
