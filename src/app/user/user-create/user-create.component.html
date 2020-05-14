@@ -1,1 +1,17 @@
-<p>user-create works!</p>
+<mat-card>
+  <form [formGroup]="userForm">
+    <mat-form-field floatLabel="never">
+      <input matInput formControlName="name" placeholder="Name..." />
+    </mat-form-field>
+    <mat-form-field floatLabel="never">
+      <input matInput formControlName="email" placeholder="abc@example.com" />
+    </mat-form-field>
+    <mat-form-field floatLabel="never">
+      <input matInput formControlName="mobile" placeholder="Mobile Number..." />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">
+      Submit
+    </button>
+  </form>
+</mat-card>
