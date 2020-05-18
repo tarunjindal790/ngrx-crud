@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-
+import { UserService } from "../user.service";
 @Component({
   selector: "app-user-create",
   templateUrl: "./user-create.component.html",
@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class UserCreateComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private userService: UserService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -44,6 +44,13 @@ export class UserCreateComponent implements OnInit {
 
   submitUser() {
     if (this.userForm.valid) {
+      let newUser = {
+        username: this.name.value,
+        email: this.email.value,
+        phone: this.mobile.value,
+      };
+
+      this.userService.addUser(newUser);
       console.log("submit");
     }
   }

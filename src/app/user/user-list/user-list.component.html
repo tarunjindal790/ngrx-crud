@@ -1,7 +1,40 @@
 <mat-card>
-  <div *ngFor="let user of users">
-    <button class="user-list-button" mat-button>
-      {{ user.username }}
-    </button>
-  </div>
+  <!-- <div *ngFor="let user of users; let i = index"> -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S.No.</th>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>
+          {{ i + 1 }}
+        </td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>
+          <mat-icon
+            id="viewButton"
+            color="primary"
+            (click)="viewUserDialog(user.id)"
+            >visibility</mat-icon
+          >
+          <mat-icon id="editButton" color="primary">edit</mat-icon>
+          <mat-icon id="deleteButton" color="warn">delete</mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </mat-card>
+<!-- <button class="user-list-button" mat-button (click)="viewUser(user.id)">
+      {{ user.username }}
+    </button> 
+  </div> -->

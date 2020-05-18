@@ -7,14 +7,27 @@ import { RouterModule } from "@angular/router";
 import { UserRoutes } from "./user.routes";
 import { MaterialModule } from "../material/material.module";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+
+import { StoreModule } from "@ngrx/store";
+import { reducer } from "../user/state/user.reducer";
+import { UserViewModalComponent } from "./user-view-modal/user-view-modal.component";
 @NgModule({
-  declarations: [UserRootComponent, UserCreateComponent, UserListComponent],
+  declarations: [
+    UserRootComponent,
+    UserCreateComponent,
+    UserListComponent,
+    UserViewModalComponent,
+  ],
+  entryComponents: [UserViewModalComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(UserRoutes),
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    StoreModule.forFeature("users", reducer),
+    HttpClientModule,
   ],
 })
 export class UserModule {}

@@ -1,0 +1,10 @@
+table {
+  width: 100%;
+}
+
+#editButton,
+#viewButton,
+#deleteButton {
+  cursor: pointer;
+  margin-right: 5px;
+}
