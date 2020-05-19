@@ -1,9 +1,8 @@
 <mat-card>
-  <!-- <div *ngFor="let user of users; let i = index"> -->
   <button mat-raised-button color="primary" (click)="createNewUser()">
     Add User
   </button>
-  <table class="table">
+  <table class="table" *ngIf="users$ | async as users">
     <thead>
       <tr>
         <th>S.No.</th>
@@ -37,7 +36,6 @@
     </tbody>
   </table>
 </mat-card>
-<!-- <button class="user-list-button" mat-button (click)="viewUser(user.id)">
-      {{ user.username }}
-    </button> 
-  </div> -->
+<mat-error *ngIf="errorMessage$ | async as errorMessage">
+  Error: {{ errorMessage }}
+</mat-error>

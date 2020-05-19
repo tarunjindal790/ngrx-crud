@@ -7,12 +7,15 @@ import { Store, select } from "@ngrx/store";
 import * as fromUser from "../state/user.reducer";
 import * as userActions from "../state/user.actions";
 import { User } from "../user";
+import { Observable, from } from "rxjs";
 @Component({
   selector: "app-user-list",
   templateUrl: "./user-list.component.html",
   styleUrls: ["./user-list.component.css"],
 })
 export class UserListComponent implements OnInit {
+  users$: Observable<any>;
+  errorMessage$: Observable<String>;
   constructor(
     private store: Store<fromUser.State>,
     private http: HttpClient,
@@ -23,15 +26,9 @@ export class UserListComponent implements OnInit {
   users = {};
 
   ngOnInit(): void {
-    // this.userService.fetchUsers().subscribe((result) => {
-    //   console.log(result);
-    //   this.users = result;
-    //   console.log(this.users);
-    // });
     this.store.dispatch(new userActions.Load());
-    this.store
-      .pipe(select(fromUser.getUsers))
-      .subscribe((users) => (this.users = users));
+    this.users$ = this.store.pipe(select(fromUser.getUsers));
+    this.errorMessage$ = this.store.pipe(select(fromUser.getError));
   }
 
   createNewUser() {
