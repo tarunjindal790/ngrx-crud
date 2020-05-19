@@ -62,7 +62,7 @@ export class UserCreateComponent implements OnInit {
         mobile: this.mobile.value,
       };
 
-      this.userForm.reset();
+      // this.userForm.reset();
 
       this.userService.addUser(newUser).subscribe({
         next: (user) => {

@@ -9,6 +9,8 @@ import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatListModule } from "@angular/material/list";
+import { MatExpansionModule } from "@angular/material/expansion";
+
 const MaterialComponents = [
   MatButtonModule,
   MatFormFieldModule,
@@ -20,6 +22,7 @@ const MaterialComponents = [
   MatGridListModule,
   MatDialogModule,
   MatListModule,
+  MatExpansionModule,
 ];
 
 @NgModule({

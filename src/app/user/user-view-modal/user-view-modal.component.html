@@ -13,6 +13,14 @@
     <mat-list-item role="listitem"
       ><strong>Website</strong>: {{ data.website }}</mat-list-item
     >
+    <mat-list-item role="listitem"
+      ><strong>Address</strong>:{{ data.address.suite }},{{
+        data.address.street
+      }},{{ data.address.city }},{{ data.address.zipcode }}</mat-list-item
+    >
+    <mat-list-item role="listitem"
+      ><strong>Company</strong>: {{ data.company.name }}</mat-list-item
+    >
   </mat-list>
 </mat-dialog-content>
 <mat-dialog-actions>
