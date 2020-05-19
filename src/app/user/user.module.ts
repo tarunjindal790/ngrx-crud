@@ -12,6 +12,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { StoreModule } from "@ngrx/store";
 import { reducer } from "../user/state/user.reducer";
 import { UserViewModalComponent } from "./user-view-modal/user-view-modal.component";
+import { EffectsModule } from "@ngrx/effects";
+import { UserEffects } from "./state/user.effects";
 @NgModule({
   declarations: [
     UserRootComponent,
@@ -27,6 +29,7 @@ import { UserViewModalComponent } from "./user-view-modal/user-view-modal.compon
     ReactiveFormsModule,
     FormsModule,
     StoreModule.forFeature("users", reducer),
+    EffectsModule.forFeature([UserEffects]),
     HttpClientModule,
   ],
 })

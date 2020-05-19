@@ -3,6 +3,10 @@ import { HttpClient } from "@angular/common/http";
 import { MatDialog } from "@angular/material/dialog";
 import { UserViewModalComponent } from "../user-view-modal/user-view-modal.component";
 import { UserService } from "../user.service";
+import { Store, select } from "@ngrx/store";
+import * as fromUser from "../state/user.reducer";
+import * as userActions from "../state/user.actions";
+import { User } from "../user";
 @Component({
   selector: "app-user-list",
   templateUrl: "./user-list.component.html",
@@ -10,26 +14,28 @@ import { UserService } from "../user.service";
 })
 export class UserListComponent implements OnInit {
   constructor(
+    private store: Store<fromUser.State>,
     private http: HttpClient,
     public userService: UserService,
     public dialog: MatDialog
   ) {}
 
-  users = [{}];
+  users = {};
 
   ngOnInit(): void {
-    // this.http
-    //   .get("https://jsonplaceholder.typicode.com/users")
-    //   .subscribe((result) => {
-    //     this.users = result;
-    //   });
-    var users = [{}];
-    this.userService.fetchUsers().subscribe((result) => {
-      console.log(result);
-      users.concat(this.userService.fetchLocalUser());
-      users.concat(result);
-      console.log(users);
-    });
+    // this.userService.fetchUsers().subscribe((result) => {
+    //   console.log(result);
+    //   this.users = result;
+    //   console.log(this.users);
+    // });
+    this.store.dispatch(new userActions.Load());
+    this.store
+      .pipe(select(fromUser.getUsers))
+      .subscribe((users) => (this.users = users));
+  }
+
+  createNewUser() {
+    // this.store.dispatch(new userActions.InitializeCurrentUser());
   }
 
   viewUserDialog(userId) {

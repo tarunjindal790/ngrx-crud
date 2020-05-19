@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../user.service";
+import { User } from "../user";
+import { Store, select } from "@ngrx/store";
+import * as fromUser from "../state/user.reducer";
+import * as userActions from "../state/user.actions";
 @Component({
   selector: "app-user-create",
   templateUrl: "./user-create.component.html",
@@ -9,7 +13,11 @@ import { UserService } from "../user.service";
 export class UserCreateComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(
+    private store: Store<fromUser.UserState>,
+    private userService: UserService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -44,13 +52,16 @@ export class UserCreateComponent implements OnInit {
 
   submitUser() {
     if (this.userForm.valid) {
-      let newUser = {
-        username: this.name.value,
+      let newUser: User = {
+        id: 1,
+        name: this.name.value,
         email: this.email.value,
-        phone: this.mobile.value,
+        mobile: this.mobile.value,
       };
 
-      this.userService.addUser(newUser);
+      this.userService.addUser(newUser).subscribe({
+        next: (user) => console.log(user),
+      });
       console.log("submit");
     }
   }
