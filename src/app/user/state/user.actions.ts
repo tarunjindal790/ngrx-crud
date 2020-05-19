@@ -1,26 +1,17 @@
 import { Action } from "@ngrx/store";
 import { User } from "../user";
+import { ShowOnDirtyErrorStateMatcher } from "@angular/material/core";
 
 export enum UserActionTypes {
-  SetCurrentUser = "[User] Set Current User",
-  ClearCurrentUser = "[User] Clear Current User",
-  InitializeCurrentUser = "[User] Initialize Current User",
+  ToggleEditComponent = "[User] Show Edit Component",
   Load = "[User] Load",
   LoadSuccess = "[User] Load Success",
   LoadFail = "[User] Load Fail",
 }
 
-export class SetCurrentUser implements Action {
-  readonly type = UserActionTypes.SetCurrentUser;
-  constructor(public payload: User) {}
-}
-
-export class ClearCurrentUser implements Action {
-  readonly type = UserActionTypes.ClearCurrentUser;
-}
-
-export class InitializeCurrentUser implements Action {
-  readonly type = UserActionTypes.InitializeCurrentUser;
+export class ToggleEditComponent implements Action {
+  readonly type = UserActionTypes.ToggleEditComponent;
+  constructor(public payload: boolean) {}
 }
 
 export class Load implements Action {
@@ -37,10 +28,4 @@ export class LoadFail implements Action {
   constructor(public payload: String) {}
 }
 
-export type UserActions =
-  | SetCurrentUser
-  | ClearCurrentUser
-  | InitializeCurrentUser
-  | Load
-  | LoadSuccess
-  | LoadFail;
+export type UserActions = ToggleEditComponent | Load | LoadSuccess | LoadFail;

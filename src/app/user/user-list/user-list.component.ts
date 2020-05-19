@@ -35,7 +35,7 @@ export class UserListComponent implements OnInit {
   }
 
   createNewUser() {
-    // this.store.dispatch(new userActions.InitializeCurrentUser());
+    this.store.dispatch(new userActions.ToggleEditComponent(true));
   }
 
   viewUserDialog(userId) {

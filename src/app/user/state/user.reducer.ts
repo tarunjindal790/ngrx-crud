@@ -8,12 +8,12 @@ export interface State extends fromRoot.State {
 }
 
 export interface UserState {
-  currentUser: any;
+  showEditComponent: boolean;
   Users: Array<any>;
 }
 
 const initialState: UserState = {
-  currentUser: null,
+  showEditComponent: false,
   Users: [],
 };
 
@@ -24,8 +24,19 @@ export const getUsers = createSelector(
   (state) => state.Users
 );
 
+export const getShowEditComponent = createSelector(
+  getUserfeatureState,
+  (state) => state.showEditComponent
+);
+
 export function reducer(state = initialState, action: UserActions): UserState {
   switch (action.type) {
+    case UserActionTypes.ToggleEditComponent:
+      return {
+        ...state,
+        showEditComponent: action.payload,
+      };
+
     case UserActionTypes.LoadSuccess:
       return {
         ...state,

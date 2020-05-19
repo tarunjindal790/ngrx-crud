@@ -65,4 +65,8 @@ export class UserCreateComponent implements OnInit {
       console.log("submit");
     }
   }
+
+  hideEditComponent() {
+    this.store.dispatch(new userActions.ToggleEditComponent(false));
+  }
 }
