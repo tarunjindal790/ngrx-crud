@@ -5,6 +5,8 @@ import { User } from "../user";
 import { Store, select } from "@ngrx/store";
 import * as fromUser from "../state/user.reducer";
 import * as userActions from "../state/user.actions";
+import { MatDialog } from "@angular/material/dialog";
+import { UserCreatedModalComponent } from "../user-created-modal/user-created-modal.component";
 @Component({
   selector: "app-user-create",
   templateUrl: "./user-create.component.html",
@@ -16,7 +18,8 @@ export class UserCreateComponent implements OnInit {
   constructor(
     private store: Store<fromUser.UserState>,
     private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -59,8 +62,13 @@ export class UserCreateComponent implements OnInit {
         mobile: this.mobile.value,
       };
 
+      this.userForm.reset();
+
       this.userService.addUser(newUser).subscribe({
-        next: (user) => console.log(user),
+        next: (user) => {
+          console.log(user);
+          this.dialog.open(UserCreatedModalComponent, { data: user });
+        },
       });
       console.log("submit");
     }

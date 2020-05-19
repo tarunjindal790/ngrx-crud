@@ -1,17 +1,14 @@
-<h2 mat-dialog-title>{{ data.name }}'s Details</h2>
+<h2 mat-dialog-title>User: {{ data.name }} created successfully!</h2>
 <mat-dialog-content>
   <mat-list role="list">
     <mat-list-item role="listitem"
-      ><strong>Username</strong>: {{ data.username }}
+      ><strong>Username</strong>: {{ data.name }}
     </mat-list-item>
     <mat-list-item role="listitem"
       ><strong>Email</strong>: {{ data.email }}</mat-list-item
     >
     <mat-list-item role="listitem"
-      ><strong>Phone</strong>: {{ data.phone }}</mat-list-item
-    >
-    <mat-list-item role="listitem"
-      ><strong>Website</strong>: {{ data.website }}</mat-list-item
+      ><strong>Phone</strong>: {{ data.mobile }}</mat-list-item
     >
   </mat-list>
 </mat-dialog-content>

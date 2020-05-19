@@ -2,17 +2,21 @@
   <form [formGroup]="userForm">
     <mat-form-field floatLabel="never">
       <input matInput [formControl]="name" placeholder="Name..." />
-      <mat-error *ngIf="name.invalid">Enter valid characters</mat-error>
+      <mat-error *ngIf="name.invalid && (name.dirty || name.touched)"
+        >Enter valid characters</mat-error
+      >
     </mat-form-field>
     <br />
     <mat-form-field floatLabel="never">
       <input matInput [formControl]="email" placeholder="abc@example.com" />
-      <mat-error *ngIf="email.invalid">Enter valid email</mat-error>
+      <mat-error *ngIf="email.invalid && (email.dirty || email.touched)"
+        >Enter valid email</mat-error
+      >
     </mat-form-field>
     <br />
     <mat-form-field floatLabel="never">
       <input matInput [formControl]="mobile" placeholder="Mobile Number..." />
-      <mat-error *ngIf="mobile.invalid"
+      <mat-error *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
         >Mobile number should be in valid Indian format</mat-error
       >
     </mat-form-field>
@@ -20,10 +24,6 @@
     <button mat-raised-button color="primary" (click)="submitUser()">
       Save
     </button>
-
-    <!-- <button mat-raised-button color="primary">
-      Cancel
-    </button> -->
 
     <button mat-raised-button color="warn">
       Delete

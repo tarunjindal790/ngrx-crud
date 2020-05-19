@@ -25,17 +25,5 @@ export class UserService {
           console.log("Created" + data);
         })
       );
-
-    // fetch(this.userApiUrl, {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     newUser,
-    //   }),
-    //   headers: {
-    //     "Content-type": "application/json; charset=UTF-8",
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((json) => {});
   }
 }
