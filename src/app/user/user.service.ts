@@ -31,11 +31,12 @@ export class UserService {
       );
   }
 
-  deleteUser(user) {
+  deleteUser(userId) {
+    // fetch works,http doesn't properly
     // fetch(this.userApiUrl + "/" + user.id, {
     //   method: "DELETE",
     // }).then((response) => console.log(response));
-    console.log("Deleting" + user.id);
-    return this.http.delete(this.userApiUrl + "/" + user.id);
+    console.log("Deleting" + userId);
+    return this.http.delete(this.userApiUrl + "/" + userId);
   }
 }

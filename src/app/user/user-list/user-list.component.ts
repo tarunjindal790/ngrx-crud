@@ -45,15 +45,11 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  deleteUser(user) {
-    const viewDialogRef = this.dialog.open(UserDeletedModalComponent, {
-      data: user,
-    });
+  deleteUser(userId) {
+    const viewDialogRef = this.dialog.open(UserDeletedModalComponent);
     viewDialogRef.afterClosed().subscribe((result) => {
       if (result == "true") {
-        this.userService.deleteUser(user).subscribe((result) => {
-          console.log(result);
-        });
+        this.store.dispatch(new userActions.DeleteUser(userId));
       }
     });
   }

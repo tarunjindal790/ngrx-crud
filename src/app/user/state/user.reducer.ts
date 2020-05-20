@@ -70,6 +70,19 @@ export function reducer(state = initialState, action: UserActions): UserState {
         error: action.payload,
       };
 
+    case UserActionTypes.DeleteUserSuccess:
+      return {
+        ...state,
+        Users: state.Users.filter((user) => user.id !== action.payload),
+        error: "",
+      };
+
+    case UserActionTypes.DeleteUserFail:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
     default:
       return state;
   }

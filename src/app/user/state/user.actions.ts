@@ -8,6 +8,9 @@ export enum UserActionTypes {
   CreateUser = "[User] Create User",
   CreateUserSuccess = "[User] Create User Success",
   CreateUserFail = "[User] Create User Fail",
+  DeleteUser = "[User] Delete User",
+  DeleteUserSuccess = "[User] Delete User Success",
+  DeleteUserFail = "[User] Delete User Fail",
 }
 
 export class ToggleEditComponent implements Action {
@@ -47,6 +50,24 @@ export class CreateUserFail implements Action {
   constructor(public payload: string) {}
 }
 
+export class DeleteUser implements Action {
+  readonly type = UserActionTypes.DeleteUser;
+
+  constructor(public payload: number) {}
+}
+
+export class DeleteUserSuccess implements Action {
+  readonly type = UserActionTypes.DeleteUserSuccess;
+
+  constructor(public payload: number) {}
+}
+
+export class DeleteUserFail implements Action {
+  readonly type = UserActionTypes.DeleteUserFail;
+
+  constructor(public payload: string) {}
+}
+
 export type UserActions =
   | ToggleEditComponent
   | Load
@@ -54,4 +75,7 @@ export type UserActions =
   | LoadFail
   | CreateUser
   | CreateUserFail
-  | CreateUserSuccess;
+  | CreateUserSuccess
+  | DeleteUser
+  | DeleteUserFail
+  | DeleteUserSuccess;
