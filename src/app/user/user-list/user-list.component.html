@@ -1,5 +1,10 @@
 <mat-card>
-  <button mat-raised-button color="primary" (click)="createNewUser()">
+  <button
+    mat-raised-button
+    style="margin-bottom: 25px;"
+    color="primary"
+    (click)="createNewUser()"
+  >
     Add User
   </button>
   <table class="table" *ngIf="users$ | async as users">

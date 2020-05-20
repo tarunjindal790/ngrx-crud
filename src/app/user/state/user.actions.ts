@@ -1,6 +1,4 @@
 import { Action } from "@ngrx/store";
-import { User } from "../user";
-import { ShowOnDirtyErrorStateMatcher } from "@angular/material/core";
 
 export enum UserActionTypes {
   ToggleEditComponent = "[User] Show Edit Component",
