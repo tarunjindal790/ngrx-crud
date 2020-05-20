@@ -10,6 +10,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatListModule } from "@angular/material/list";
 import { MatExpansionModule } from "@angular/material/expansion";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 const MaterialComponents = [
   MatButtonModule,
@@ -23,6 +24,7 @@ const MaterialComponents = [
   MatDialogModule,
   MatListModule,
   MatExpansionModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

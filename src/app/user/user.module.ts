@@ -14,7 +14,9 @@ import { reducer } from "../user/state/user.reducer";
 import { UserViewModalComponent } from "./user-view-modal/user-view-modal.component";
 import { EffectsModule } from "@ngrx/effects";
 import { UserEffects } from "./state/user.effects";
-import { UserCreatedModalComponent } from './user-created-modal/user-created-modal.component';
+import { UserCreatedModalComponent } from "./user-created-modal/user-created-modal.component";
+import { UserEditModalComponent } from "./user-edit-modal/user-edit-modal.component";
+import { UserDeletedModalComponent } from "./user-deleted-modal/user-deleted-modal.component";
 @NgModule({
   declarations: [
     UserRootComponent,
@@ -22,8 +24,10 @@ import { UserCreatedModalComponent } from './user-created-modal/user-created-mod
     UserListComponent,
     UserViewModalComponent,
     UserCreatedModalComponent,
+    UserEditModalComponent,
+    UserDeletedModalComponent,
   ],
-  entryComponents: [UserViewModalComponent],
+  entryComponents: [UserViewModalComponent, UserDeletedModalComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(UserRoutes),
