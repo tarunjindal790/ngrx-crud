@@ -57,6 +57,19 @@ export function reducer(state = initialState, action: UserActions): UserState {
         error: action.payload,
       };
 
+    case UserActionTypes.CreateUserSuccess:
+      return {
+        ...state,
+        Users: [...state.Users, action.payload],
+        error: "",
+      };
+
+    case UserActionTypes.CreateUserFail:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
     default:
       return state;
   }

@@ -1,10 +1,13 @@
 import { Action } from "@ngrx/store";
-
+import { User } from "../user";
 export enum UserActionTypes {
   ToggleEditComponent = "[User] Show Edit Component",
   Load = "[User] Load",
   LoadSuccess = "[User] Load Success",
   LoadFail = "[User] Load Fail",
+  CreateUser = "[User] Create User",
+  CreateUserSuccess = "[User] Create User Success",
+  CreateUserFail = "[User] Create User Fail",
 }
 
 export class ToggleEditComponent implements Action {
@@ -26,4 +29,29 @@ export class LoadFail implements Action {
   constructor(public payload: String) {}
 }
 
-export type UserActions = ToggleEditComponent | Load | LoadSuccess | LoadFail;
+export class CreateUser implements Action {
+  readonly type = UserActionTypes.CreateUser;
+
+  constructor(public payload: User) {}
+}
+
+export class CreateUserSuccess implements Action {
+  readonly type = UserActionTypes.CreateUserSuccess;
+
+  constructor(public payload: User) {}
+}
+
+export class CreateUserFail implements Action {
+  readonly type = UserActionTypes.CreateUserFail;
+
+  constructor(public payload: string) {}
+}
+
+export type UserActions =
+  | ToggleEditComponent
+  | Load
+  | LoadSuccess
+  | LoadFail
+  | CreateUser
+  | CreateUserFail
+  | CreateUserSuccess;

@@ -14,6 +14,10 @@ export class UserService {
     return this.http.get(this.userApiUrl);
   }
 
+  fetchUserById(userId) {
+    return this.http.get(this.userApiUrl + "/" + userId);
+  }
+
   addUser(newUser: User) {
     const headers = new HttpHeaders({
       "Content-type": "application/json; charset=UTF-8",
@@ -25,5 +29,13 @@ export class UserService {
           console.log("Created" + data);
         })
       );
+  }
+
+  deleteUser(user) {
+    // fetch(this.userApiUrl + "/" + user.id, {
+    //   method: "DELETE",
+    // }).then((response) => console.log(response));
+    console.log("Deleting" + user.id);
+    return this.http.delete(this.userApiUrl + "/" + user.id);
   }
 }

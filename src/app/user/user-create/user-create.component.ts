@@ -59,17 +59,10 @@ export class UserCreateComponent implements OnInit {
         id: 1,
         name: this.name.value,
         email: this.email.value,
-        mobile: this.mobile.value,
+        phone: this.mobile.value,
       };
 
-      // this.userForm.reset();
-
-      this.userService.addUser(newUser).subscribe({
-        next: (user) => {
-          console.log(user);
-          this.dialog.open(UserCreatedModalComponent, { data: user });
-        },
-      });
+      this.store.dispatch(new userActions.CreateUser(newUser));
       console.log("submit");
     }
   }

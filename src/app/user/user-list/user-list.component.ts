@@ -10,6 +10,7 @@ import * as userActions from "../state/user.actions";
 import { User } from "../user";
 import { Observable, from } from "rxjs";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { tap } from "rxjs/operators";
 @Component({
   selector: "app-user-list",
   templateUrl: "./user-list.component.html",
@@ -39,16 +40,9 @@ export class UserListComponent implements OnInit {
   }
 
   viewUserDialog(userId) {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => {
-        var filtered = json.filter(function (j) {
-          return j.id == userId;
-        });
-        console.log(filtered);
-        console.log(filtered[0].name);
-        this.dialog.open(UserViewModalComponent, { data: filtered[0] });
-      });
+    this.userService.fetchUserById(userId).subscribe((result) => {
+      this.dialog.open(UserViewModalComponent, { data: result });
+    });
   }
 
   deleteUser(user) {
@@ -57,9 +51,9 @@ export class UserListComponent implements OnInit {
     });
     viewDialogRef.afterClosed().subscribe((result) => {
       if (result == "true") {
-        fetch(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
-          method: "DELETE",
-        }).then((response) => console.log(response));
+        this.userService.deleteUser(user).subscribe((result) => {
+          console.log(result);
+        });
       }
     });
   }
